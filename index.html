@@ -20,6 +20,12 @@
         Com carinho,<br>
         Lázaro Martins Rodrigues
       </p>
+
+      <!-- 🏀 MINI JOGO -->
+      <div class="jogo">
+        <div class="cesta">🧺</div>
+        <div class="bola" draggable="true">🏀</div>
+      </div>
     </div>
 
     <script>
@@ -30,15 +36,29 @@
         heart.classList.add('heart');
         heart.textContent = '❤️';
 
-       
         heart.style.left = (Math.random() * window.innerWidth) + 'px';
 
         document.body.appendChild(heart);
 
-       
         setTimeout(() => {
           heart.remove();
         }, 2000);
+      });
+
+      // 🏀 LÓGICA DO JOGO
+      const bola = document.querySelector('.bola');
+      const cesta = document.querySelector('.cesta');
+
+      bola.addEventListener('dragstart', (e) => {
+        e.dataTransfer.setData("text/plain", "bola");
+      });
+
+      cesta.addEventListener('dragover', (e) => {
+        e.preventDefault();
+      });
+
+      cesta.addEventListener('drop', () => {
+        alert("🏀 CESTA! 🔥");
       });
     </script>
   </body>

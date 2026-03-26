@@ -1,10 +1,10 @@
 body {
   background: 
     linear-gradient(
-      rgba(255, 105, 180, 0.4), 
-      rgba(255, 182, 193, 0.6)
+      rgba(214, 109, 24, 0.4), 
+      rgba(241, 93, 7, 0.6)
     ),
-    url("https://images.unsplash.com/photo-1518199266791-5375a83190b7");
+    url("https://images.unsplash.com/photo-1546519638-68e109498ffc");
 
   background-size: cover;
   background-position: center;
@@ -77,4 +77,25 @@ h1 {
     opacity: 0;
     transform: translateY(-150px) scale(1.5);
   }
+}
+
+.jogo {
+  margin-top: 40px;
+  position: relative;
+  height: 200px;
+}
+
+.cesta {
+  position: absolute;
+  right: 20px;
+  bottom: 0;
+  font-size: 60px;
+}
+
+.bola {
+  position: absolute;
+  left: 20px;
+  bottom: 0;
+  font-size: 50px;
+  cursor: grab;
 }
