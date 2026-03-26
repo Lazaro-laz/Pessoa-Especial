@@ -4,7 +4,7 @@ body {
       rgba(255, 105, 180, 0.4), 
       rgba(255, 182, 193, 0.6)
     ),
-    url("fundo.jpg");
+    url("frente.jpg");
 
   background-size: cover;
   background-position: center;
