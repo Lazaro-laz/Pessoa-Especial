@@ -1,5 +1,5 @@
 body {
-  background: linear-gradient(135deg, #1e1e2f 0%, #ff9e9e 50%, #1e1e2f 100%);
+  background: linear-gradient(135deg, #aa6c92 0%, #ff9e9e 50%, #aa6c92 100%);
   margin: 0;
   font-family: Arial, sans-serif;
 }
@@ -12,7 +12,7 @@ body {
   max-width: 600px;
   margin: 80px auto;
   text-align: center;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+  box-shadow: 0 5px 20px rgba(240, 141, 141, 0.5);
 }
 
 h1 {
@@ -21,12 +21,12 @@ h1 {
 
 .mensagem {
   font-size: 20px;
-  color: #333;
+  color: #eb8fc8;
 }
 
 .assinatura {
   margin-top: 20px;
-  color: #666;
+  color: #eb8dde;
 }
 
 #heart-btn {
