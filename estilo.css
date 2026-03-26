@@ -1,11 +1,20 @@
 body {
-  background: linear-gradient(135deg, #aa6c92 0%, #ff9e9e 50%, #aa6c92 100%);
+  background: linear-gradient(
+      rgba(255, 182, 193, 0.8),
+      rgba(255, 182, 193, 0.8)
+    ),
+    url("fundo.jpg");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
   margin: 0;
   font-family: Arial, sans-serif;
 }
 
 .container {
-  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.85);
   padding: 30px;
   border-radius: 15px;
   width: 80%;

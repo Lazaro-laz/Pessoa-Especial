@@ -30,12 +30,12 @@
         heart.classList.add('heart');
         heart.textContent = '❤️';
 
-        // Posição horizontal aleatória dentro da janela
+       
         heart.style.left = (Math.random() * window.innerWidth) + 'px';
 
         document.body.appendChild(heart);
 
-        // Remove o coração após a animação terminar (2s)
+       
         setTimeout(() => {
           heart.remove();
         }, 2000);
