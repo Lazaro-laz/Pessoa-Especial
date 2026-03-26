@@ -10,15 +10,36 @@
   <body>
     <div class="container">
       <h1>💖 Josiele Martins Rodrigues 💖</h1>
+      <button id="heart-btn">❤️ Enviar Amor</button>
 
       <p class="mensagem">
         Te amo muito, minha mãe! Obrigado por tudo que você faz por mim 💕
       </p>
 
-      <p class="assinatura">
+      <p class="assinatura">  
         Com carinho,<br>
         Lázaro Martins Rodrigues
       </p>
     </div>
+
+    <script>
+      const button = document.getElementById('heart-btn');
+
+      button.addEventListener('click', () => {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.textContent = '❤️';
+
+        // Posição horizontal aleatória dentro da janela
+        heart.style.left = (Math.random() * window.innerWidth) + 'px';
+
+        document.body.appendChild(heart);
+
+        // Remove o coração após a animação terminar (2s)
+        setTimeout(() => {
+          heart.remove();
+        }, 2000);
+      });
+    </script>
   </body>
 </html>
