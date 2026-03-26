@@ -1,32 +1,30 @@
 body {
-  background: linear-gradient(to right, #ff9a9e, #fad0c4);
+  background-color: #1e1e2f; /* fundo escuro */
   margin: 0;
   font-family: Arial, sans-serif;
 }
 
 .container {
-  background: white;
+  background-color: #ffffff;
   padding: 30px;
   border-radius: 15px;
   width: 80%;
   max-width: 600px;
   margin: 80px auto;
   text-align: center;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  box-shadow: 0 5px 20px rgba(0,0,0,0.5);
 }
 
 h1 {
-  color: #e91e63;
+  color: #ff4d6d; /* rosa forte */
 }
 
 .mensagem {
   font-size: 20px;
   color: #333;
-  margin-top: 20px;
 }
 
 .assinatura {
-  margin-top: 30px;
-  font-style: italic;
-  color: #555;
+  margin-top: 20px;
+  color: #666;
 }
