@@ -34,21 +34,21 @@
     }
 
     h1 {
-      color: #ff4d6d;
+      color: #000000;
     }
 
     .mensagem {
       font-size: 20px;
-      color: #e26db3;
+      color: #c06510;
     }
 
     .assinatura {
       margin-top: 20px;
-      color: #c94db0;
+      color: #b95b0d;
     }
 
     #heart-btn {
-      background-color: #ff4d6d;
+      background-color: #e27a18;
       border: none;
       padding: 12px 25px;
       border-radius: 25px;
