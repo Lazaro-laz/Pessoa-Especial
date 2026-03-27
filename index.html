@@ -1,65 +1,221 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Para meu amigo Ivan ❤️</title>
-    <link rel="stylesheet" href="estilo.css">
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para meu amigo Ivan</title>
 
-  <body>
-    <div class="container">
-      <h1>💖 Ivan Gabriel (PEQUENO) 💖</h1>
-      <button id="heart-btn">❤️ Enviar Amor</button>
+  <style>
+    body {
+      background: 
+        linear-gradient(
+          rgba(0, 0, 0, 0.5), 
+          rgba(0, 0, 0, 0.7)
+        ),
+        url("https://images.unsplash.com/photo-1546519638-68e109498ffc");
 
-      <p class="mensagem">
-        Favor ganhar o jifeng, vc e um bom amigo! 💕
-      </p>
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
 
-      <p class="assinatura">  
-        Com carinho,<br>
-        Lázaro Martins Rodrigues
-      </p>
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
 
-      <!-- 🏀 MINI JOGO -->
-      <div class="jogo">
-        <div class="cesta">🧺</div>
-        <div class="bola" draggable="true">🏀</div>
-      </div>
+    .container {
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 30px;
+      border-radius: 15px;
+      width: 80%;
+      max-width: 600px;
+      margin: 80px auto;
+      text-align: center;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+    }
+
+    h1 {
+      color: #ce5b26;
+    }
+
+    .mensagem {
+      font-size: 20px;
+      color: #b17425;
+    }
+
+    .assinatura {
+      margin-top: 20px;
+      color: #8f6330;
+    }
+
+    #heart-btn {
+      background-color: #0a0708;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 25px;
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+      margin-top: 30px;
+      transition: 0.3s;
+    }
+
+    #heart-btn:hover {
+      transform: scale(1.05);
+      background-color: #c49125;
+    }
+
+    /* Bolas decorativas */
+    .bola {
+      position: fixed;
+      font-size: 40px;
+      opacity: 0.7;
+    }
+
+    .bola1 {
+      bottom: 20px;
+      left: 30px;
+    }
+
+    .bola2 {
+      top: 100px;
+      right: 50px;
+    }
+
+    /* Área do jogo */
+    .game-area {
+      position: relative;
+      width: 100%;
+      height: 300px;
+      margin-top: 40px;
+    }
+
+    /* Bola arrastável */
+    #ball {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 50px;
+      cursor: grab;
+      user-select: none;
+      transition: transform 0.2s;
+    }
+
+    #ball:active {
+      cursor: grabbing;
+      transform: scale(1.2);
+    }
+
+    /* CESTA REAL */
+    #hoop {
+      position: absolute;
+      top: 20px;
+      right: 20%;
+      width: 120px;
+      height: 120px;
+      background-image: url("https://cdn-icons-png.flaticon.com/512/889/889455.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    /* Animação de ponto */
+    @keyframes scoreEffect {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.5); opacity: 1; }
+      100% { transform: scale(1); opacity: 0; }
+    }
+
+    .score {
+      position: absolute;
+      top: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 40px;
+      color: gold;
+      animation: scoreEffect 1s ease forwards;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Bolas decorativas -->
+  <div class="bola bola1">🏀</div>
+  <div class="bola bola2">🏀</div>
+
+  <div class="container">
+    <h1>Ivan Gabriel (PEQUENO)</h1>
+
+    <button id="heart-btn">🏀 Enviar Respeito</button>
+
+    <p class="mensagem">
+      Favor ganhar o jifeng, vc é um bom amigo!
+    </p>
+
+    <p class="assinatura">
+      Com carinho,<br>
+      Lázaro Martins Rodrigues
+    </p>
+
+    <!-- Jogo -->
+    <div class="game-area">
+      <div id="ball">🏀</div>
+      <div id="hoop"></div>
     </div>
+  </div>
 
-    <script>
-      const button = document.getElementById('heart-btn');
+  <script>
+    const button = document.getElementById('heart-btn');
+    button.addEventListener('click', () => {
+      alert("🏀 Amizade fortalecida!");
+    });
 
-      button.addEventListener('click', () => {
-        const heart = document.createElement('div');
-        heart.classList.add('heart');
-        heart.textContent = '❤️';
+    const ball = document.getElementById("ball");
+    const hoop = document.getElementById("hoop");
 
-        heart.style.left = (Math.random() * window.innerWidth) + 'px';
+    let isDragging = false;
 
-        document.body.appendChild(heart);
+    ball.addEventListener("mousedown", () => {
+      isDragging = true;
+    });
+
+    document.addEventListener("mouseup", () => {
+      isDragging = false;
+    });
+
+    document.addEventListener("mousemove", (e) => {
+      if (isDragging) {
+        ball.style.left = e.clientX - 25 + "px";
+        ball.style.top = e.clientY - 25 + "px";
+      }
+    });
+
+    document.addEventListener("mouseup", () => {
+      const ballRect = ball.getBoundingClientRect();
+      const hoopRect = hoop.getBoundingClientRect();
+
+      if (
+        ballRect.top < hoopRect.bottom &&
+        ballRect.bottom > hoopRect.top &&
+        ballRect.left < hoopRect.right &&
+        ballRect.right > hoopRect.left
+      ) {
+        const score = document.createElement("div");
+        score.classList.add("score");
+        score.textContent = "🏀 +1";
+
+        document.body.appendChild(score);
 
         setTimeout(() => {
-          heart.remove();
-        }, 2000);
-      });
+          score.remove();
+        }, 1000);
 
-      // 🏀 LÓGICA DO JOGO
-      const bola = document.querySelector('.bola');
-      const cesta = document.querySelector('.cesta');
+        ball.style.left = "50%";
+        ball.style.top = "auto";
+        ball.style.bottom = "20px";
+      }
+    });
+  </script>
 
-      bola.addEventListener('dragstart', (e) => {
-        e.dataTransfer.setData("text/plain", "bola");
-      });
-
-      cesta.addEventListener('dragover', (e) => {
-        e.preventDefault();
-      });
-
-      cesta.addEventListener('drop', () => {
-        alert("🏀 CESTA! 🔥");
-      });
-    </script>
-  </body>
+</body>
 </html>
