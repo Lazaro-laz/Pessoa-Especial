@@ -1,101 +1,145 @@
-body {
-  background: 
-    linear-gradient(
-      rgba(214, 109, 24, 0.4), 
-      rgba(241, 93, 7, 0.6)
-    ),
-    url("https://images.unsplash.com/photo-1546519638-68e109498ffc");
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para meu amigo Ivan</title>
 
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  <style>
+    body {
+      background: 
+        linear-gradient(
+          rgba(0, 0, 0, 0.5), 
+          rgba(0, 0, 0, 0.7)
+        ),
+        url("https://images.unsplash.com/photo-1546519638-68e109498ffc");
 
-  backdrop-filter: blur(3px);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
 
-  margin: 0;
-  font-family: Arial, sans-serif;
-}
+      margin: 0;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
 
-.container {
-  background-color: rgba(255, 255, 255, 0.85);
-  padding: 30px;
-  border-radius: 15px;
-  width: 80%;
-  max-width: 600px;
-  margin: 80px auto;
-  text-align: center;
-  box-shadow: 0 5px 20px rgba(240, 141, 141, 0.5);
-}
+    .container {
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 30px;
+      border-radius: 15px;
+      width: 80%;
+      max-width: 600px;
+      margin: 80px auto;
+      text-align: center;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+    }
 
-h1 {
-  color: #ff4d6d;
-}
+    h1 {
+      color: #ff4d6d;
+    }
 
-.mensagem {
-  font-size: 20px;
-  color: #eb8fc8;
-}
+    .mensagem {
+      font-size: 20px;
+      color: #e26db3;
+    }
 
-.assinatura {
-  margin-top: 20px;
-  color: #eb8dde;
-}
+    .assinatura {
+      margin-top: 20px;
+      color: #c94db0;
+    }
 
-#heart-btn {
-  background-color: #ff4d6d;
-  border: none;
-  padding: 12px 25px;
-  border-radius: 25px;
-  color: white;
-  font-size: 18px;
-  cursor: pointer;
-  margin-top: 30px;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
+    #heart-btn {
+      background-color: #ff4d6d;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 25px;
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+      margin-top: 30px;
+    }
 
-#heart-btn:hover {
-  background-color: #e8435f;
-  transform: scale(1.05);
-}
+    /* Bolas decorativas fixas */
+    .bola {
+      position: fixed;
+      font-size: 40px;
+      opacity: 0.7;
+    }
 
-.heart {
-  position: fixed;
-  bottom: 30px;
-  font-size: 24px;
-  animation: rise 2s forwards;
-  pointer-events: none;
-  user-select: none;
-  z-index: 9999;
-}
+    .bola1 {
+      bottom: 20px;
+      left: 30px;
+    }
 
-@keyframes rise {
-  0% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(-150px) scale(1.5);
-  }
-}
+    .bola2 {
+      top: 100px;
+      right: 50px;
+    }
 
-.jogo {
-  margin-top: 40px;
-  position: relative;
-  height: 200px;
-}
+    /* Bolas animadas */
+    .bola-random {
+      position: fixed;
+      font-size: 30px;
+      pointer-events: none;
+      animation: subir 2s ease-out forwards;
+    }
 
-.cesta {
-  position: absolute;
-  right: 20px;
-  bottom: 0;
-  font-size: 60px;
-}
+    @keyframes subir {
+      0% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-200px);
+        opacity: 0;
+      }
+    }
 
-.bola {
-  position: absolute;
-  left: 20px;
-  bottom: 0;
-  font-size: 50px;
-  cursor: grab;
-}
+  </style>
+</head>
+
+<body>
+
+  <!-- Bolas decorativas -->
+  <div class="bola bola1">🏀</div>
+  <div class="bola bola2">🏀</div>
+
+  <div class="container">
+    <h1>Ivan Gabriel (PEQUENO)</h1>
+
+    <button id="heart-btn">🏀 Enviar Respeito</button>
+
+    <p class="mensagem">
+      Favor ganhar o jifeng, vc é um bom amigo!
+    </p>
+
+    <p class="assinatura">
+      Com carinho,<br>
+      Lázaro Martins Rodrigues
+    </p>
+  </div>
+
+  <script>
+    const button = document.getElementById('heart-btn');
+
+    button.addEventListener('click', () => {
+      for (let i = 0; i < 6; i++) {
+        const bola = document.createElement('div');
+        bola.classList.add('bola-random');
+        bola.textContent = '🏀';
+
+        // posição aleatória
+        bola.style.left = Math.random() * window.innerWidth + 'px';
+        bola.style.top = Math.random() * window.innerHeight + 'px';
+
+        document.body.appendChild(bola);
+
+        // remove depois da animação
+        setTimeout(() => {
+          bola.remove();
+        }, 2000);
+      }
+    });
+  </script>
+
+</body>
+</html>

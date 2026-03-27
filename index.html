@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Para meu amigo Ivan</title>
-
-  <style>
+ <style>
     body {
       background: 
         linear-gradient(
@@ -20,6 +13,7 @@
 
       margin: 0;
       font-family: Arial, sans-serif;
+      overflow: hidden;
     }
 
     .container {
@@ -75,46 +69,24 @@
       right: 50px;
     }
 
-    /* Bolas criadas pelo botão */
+    /* Bolas animadas */
     .bola-random {
       position: fixed;
       font-size: 30px;
       pointer-events: none;
+      animation: subir 2s ease-out forwards;
     }
 
-    /* Área do jogo */
-    .game-area {
-      position: relative;
-      width: 100%;
-      height: 300px;
-      margin-top: 40px;
-    }
-
-    /* Bola arrastável */
-    #ball {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 50px;
-      cursor: grab;
-      user-select: none;
-    }
-
-    #ball:active {
-      cursor: grabbing;
-    }
-
-    /* Cesta */
-    #hoop {
-      position: absolute;
-      top: 20px;
-      right: 20%;
-      width: 120px;
-      height: 120px;
-      background-image: url("https://cdn-icons-png.flaticon.com/512/889/889455.png");
-      background-size: contain;
-      background-repeat: no-repeat;
+    /* ANIMAÇÃO SUBIR E SUMIR */
+    @keyframes subir {
+      0% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-150px);
+        opacity: 0;
+      }
     }
 
   </style>
@@ -139,19 +111,14 @@
       Com carinho,<br>
       Lázaro Martins Rodrigues
     </p>
-
-    <div class="game-area">
-      <div id="ball">🏀</div>
-      <div id="hoop"></div>
-    </div>
   </div>
 
   <script>
     const button = document.getElementById('heart-btn');
 
-    // Criar bolas aleatórias
+    // Criar bolas que sobem e somem
     button.addEventListener('click', () => {
-      for (let i = 0; i < 5; i++) {
+      for (let i = 0; i < 6; i++) {
         const bola = document.createElement('div');
         bola.classList.add('bola-random');
         bola.textContent = '🏀';
@@ -160,25 +127,11 @@
         bola.style.top = Math.random() * window.innerHeight + 'px';
 
         document.body.appendChild(bola);
-      }
-    });
 
-    // Arrastar bola principal
-    const ball = document.getElementById("ball");
-    let isDragging = false;
-
-    ball.addEventListener("mousedown", () => {
-      isDragging = true;
-    });
-
-    document.addEventListener("mouseup", () => {
-      isDragging = false;
-    });
-
-    document.addEventListener("mousemove", (e) => {
-      if (isDragging) {
-        ball.style.left = e.clientX - 25 + "px";
-        ball.style.top = e.clientY - 25 + "px";
+        // remover depois da animação
+        setTimeout(() => {
+          bola.remove();
+        }, 2000);
       }
     });
   </script>
